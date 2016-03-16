@@ -15,8 +15,21 @@ public class DigitSum {
 		return sum;
 	}
 	
+	public static int sum2(int number) {
+		int sum = 0;
+				while (number > 0){
+					
+					int digit = number % 10;
+					sum += digit;
+					number = number / 10;
+				}
+		return sum;
+		
+	}
+	
 	public static void main(String[] args){
 		System.out.println(sum(123));
+		System.out.println(sum2(123));
 	}
 
 }
