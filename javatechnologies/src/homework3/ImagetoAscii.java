@@ -19,7 +19,7 @@ public class ImagetoAscii {
 	
 	public ImagetoAscii(){
 		try {
-			prntwrt = new PrintWriter(filewrt = new Filewriter("asciiart.txt", 
+			prntwrt = new PrintWriter(filewrt = new FileWriter("asciiart.txt", 
 					true));
 		}catch (IOException ex){
 		}
@@ -43,17 +43,45 @@ public class ImagetoAscii {
 				prntwrt.println("");
 				prntwrt.flush();
 				filewrt.flush();
-			}catch (Exception ex) {
+			} catch (Exception ex) {
+            }
+        }
+    }
+
+	public String strChar(double g) {
+		String str = "";
+		if(g >= 240){
+			str = " ";
+		}else if (g >=200){
+			str = ".";
+		}else if (g >= 190){
+			str = "*";
+		}else if (g >= 170){
+			str = "+";
+		}else if (g >= 120){
+			str = "^";
+		}else if (g >=110){
+			str = "8";
+		}else if (g >= 60){
+			str = "#";
+		}else {
+			str = "@";
 		}
-
-}
-
-	private void print(Object strChar) {
-		// TODO Auto-generated method stub
+		return str;
 		
 	}
-
-	private Object strChar(double pixval2) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public void print(String str) {
+		try {
+			prntwrt.print(str);
+			prntwrt.flush();
+			filewrt.flush();
+		}catch (Exception ex){
+			
+		}
+	}
+	
+	public static void main(String[] args) {
+		Img2Ascii obj = new Img2Ascii();
+		obj.convertToAscii("heart.png");
 	}
